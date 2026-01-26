@@ -47,6 +47,7 @@ exports.signup = async (req, res) => {
 const jwt = require('jsonwebtoken'); // <-- add this
 
 exports.login = async (req, res) => {
+    console.log('🔥 LOGIN API HIT'); // ADD THIS
     const { email, password } = req.body;
 
     if (!email || !password) {
