@@ -13,7 +13,7 @@ exports.signup = async (req, res) => {
         const hashedPassword = await bcrypt.hash(password, 10);
 
         const { data, error } = await supabase
-            .from('usertable')
+            .from('users')
             .insert([
                 {
                     username,
@@ -57,7 +57,7 @@ exports.login = async (req, res) => {
     try {
         // Fetch all users matching email OR mobile
         const { data, error } = await supabase
-            .from('usertable')
+            .from('users')
             .select('*')
             .or(`email.eq.${email},mobile.eq.${email}`);
 
