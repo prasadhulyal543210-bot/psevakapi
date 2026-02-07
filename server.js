@@ -3,6 +3,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 
 const authRoutes = require('./routes/auth.routes');
+const rationRoutes = require('./routes/mannual.routes');
 
 const app = express();
 
@@ -11,6 +12,7 @@ app.use(bodyParser.json());
 
 // Use routes with /api prefix
 app.use('/api', authRoutes);
+app.use('/api', rationRoutes); 
 
 app.get('/', (req, res) => {
   res.send('Node.js backend running!');
