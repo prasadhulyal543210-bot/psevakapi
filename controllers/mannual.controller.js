@@ -10,12 +10,23 @@ exports.submitRation = async (req, res) => {
             });
         }
 
+        const istTime = new Date().toLocaleString('en-IN', { 
+            timeZone: 'Asia/Kolkata',
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit'
+        });
+
         const { data, error } = await supabase
             .from('rationMannual')
             .insert([
                 {
                     pdf_name,
-                    user_email
+                    user_email,
+                    submitted_at: istTime
                 }
             ])
             .select();
