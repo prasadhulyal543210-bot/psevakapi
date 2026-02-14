@@ -10,15 +10,12 @@ exports.submitRation = async (req, res) => {
             });
         }
 
-        const istTime = new Date().toLocaleString('en-IN', { 
-            timeZone: 'Asia/Kolkata',
-            year: 'numeric',
-            month: '2-digit',
-            day: '2-digit',
-            hour: '2-digit',
-            minute: '2-digit',
-            second: '2-digit'
-        });
+        const istTime = new Date()
+            .toISOString()
+            .slice(0, 19)
+            .replace('T', ' ');
+
+
 
         const { data, error } = await supabase
             .from('rationMannual')
